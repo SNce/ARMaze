@@ -1,0 +1,16 @@
+/util/calib_camera2/main.c
+
+  * <windows.h> missing
+    Included the following section:
+
+        #ifdef _WIN32
+
+        #include <windows.h>
+
+        #endif
+
+
+  * GL_UNPACK_IMAGE_HEIGHT is undefined prior to OpenGL 1.2
+    Included the following section:
+
+	#include <GL/glext.h>

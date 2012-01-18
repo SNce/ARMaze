@@ -1,0 +1,12 @@
+; DsRenderer.DEF
+;
+; This file provides declarations of the entrypoints in
+; the DLL.
+
+LIBRARY         "DsRenderer.ax"
+EXPORTS
+    DllGetClassObject   PRIVATE
+    DllCanUnloadNow     PRIVATE
+    DllRegisterServer   PRIVATE
+    DllUnregisterServer PRIVATE
+

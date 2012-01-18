@@ -1,0 +1,32 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: multi - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\ADMINI~1.DEM\LOCALS~1\Temp\RSP19.tmp" with contents
+[
+/nologo /MLd /W3 /Gm /GX /ZI /Od /I "../../include" /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /Fp"Debug/multi.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"C:\Users\ARToolKit-DS-2.65b\examples\multiTest\multiTest.c"
+]
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1.DEM\LOCALS~1\Temp\RSP19.tmp" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1.DEM\LOCALS~1\Temp\RSP1A.tmp" with contents
+[
+glu32.lib glut32.lib opengl32.lib libARvideo.lib libAR.lib libARgsub.lib libARMulti.lib /nologo /subsystem:console /incremental:yes /pdb:"Debug/multiTest.pdb" /debug /machine:I386 /nodefaultlib:"msvcrtd.lib" /nodefaultlib:"msvcrt.lib" /nodefaultlib:"LIBCMT.lib" /out:"../../bin/multiTest.exe" /pdbtype:sept /libpath:"../../lib" 
+".\Debug\multiTest.obj"
+]
+Creating command line "link.exe @C:\DOCUME~1\ADMINI~1.DEM\LOCALS~1\Temp\RSP1A.tmp"
+<h3>Output Window</h3>
+Compiling...
+multiTest.c
+Linking...
+
+
+
+<h3>Results</h3>
+multiTest.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

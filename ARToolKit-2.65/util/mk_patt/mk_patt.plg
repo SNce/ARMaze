@@ -1,0 +1,24 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: mk_patt - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\ADMINI~1.DEM\LOCALS~1\Temp\RSPFD.tmp" with contents
+[
+glu32.lib glut32.lib opengl32.lib libARvideo.lib libAR.lib libARgsub.lib /nologo /subsystem:console /incremental:yes /pdb:"Debug/mk_patt.pdb" /debug /machine:I386 /nodefaultlib:"msvcrt.lib" /nodefaultlib:"msvcrtd.lib" /out:"../../bin/mk_patt.exe" /pdbtype:sept /libpath:"../../lib" 
+".\Debug\mk_patt.obj"
+]
+Creating command line "link.exe @C:\DOCUME~1\ADMINI~1.DEM\LOCALS~1\Temp\RSPFD.tmp"
+<h3>Output Window</h3>
+Linking...
+
+
+
+<h3>Results</h3>
+mk_patt.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>
