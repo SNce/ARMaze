@@ -25,6 +25,20 @@ private:
 	static double patt_width;
 	static double patt_centre[2];
 	static double patt_trans[3][4];
+	static double ref_trans[3][4];
+
+	static float abs_gravity[4];
+	static float grav_trans[3];
+
+	static char* cap_msg;
+	static char* start_msg;
+	static float text_pos[3];
+	static float text_color[3];
+
+	static int patt_visible;
+	static int ref_set;
+
+	static float prev_time;
 
 	static Maze* maze;
 	

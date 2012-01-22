@@ -101,29 +101,38 @@
 #include <list>
 #include <rapidxml\rapidxml.hpp>
 
+#define SCALE 1.0
+
 // Ball
 class Ball
 {
 private:
 	float radius;
 	float mass;
-	Vector3* velocity;
-	Vector3* acceleration;
-	Vector3* position;
+	Vector3 gravity;
+	Vector3 netForce;
+	Vector3 acceleration;
+	Vector3 velocity;
+	Vector3 position;
 public:
-	Ball();
+	Ball(float r, float m);
 	~Ball();
+
+	void tick(float t);
+	void setGravity(float* g_array);
+	void draw();
 };
 
 // Wall
 class Wall
 {
 private:
-	Vector3* normal;
+	Vector3 normal;
 	Vector3* vertices;
 public:
 	Wall(Vector3* v);
 	~Wall();
+	void calcNormal();
 	void draw();
 };
 
@@ -131,12 +140,15 @@ public:
 class Maze
 {
 private:
+	Vector3 gravity;
 	Ball* ball;
 	std::list<Wall*> walls;
 public:
 	Maze(char* mazeFile);
 	~Maze();
+	void tick(float t);
 	void draw();
+	void setGravity(float* g_array);
 };
 
 

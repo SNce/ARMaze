@@ -53,7 +53,7 @@ public:
 	}
 
 	//get and set.
-	const T* getValue() const
+	T* getValue()
 	{
 		return _array;
 	}
@@ -165,6 +165,8 @@ public:
 		return rv;
 	}
 
+
+
 	// Comparison operators.
 	friend bool operator == (const Vect3<T>& lhs, const Vect3<T>& rhs)
 	{
@@ -180,6 +182,25 @@ public:
 		for(int i = 0; i < 3; i++)
 			rv &= lhs._array[i] != rhs._array[i];
 		return rv;
+	}
+
+	Vect3<T>& normalize()
+	{
+		float sum = _array[0] * _array[0];
+		sum += _array[1] * _array[1];
+		sum += _array[2] * _array[2];
+
+		sum = sqrt(sum);
+		*this = *this / sum;
+
+		return *this;
+	}
+
+	Vect3<T>& setMagnitude(float v)
+	{
+		this->normalize();
+		*this *= v;
+		return *this;
 	}
 
 };
