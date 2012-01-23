@@ -33,7 +33,6 @@ bin
 obj
 *.ncb
 *.vcproj*
-*.vcxproj*
 *.suo
 *.user
 *.sln.cache
