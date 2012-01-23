@@ -165,8 +165,6 @@ public:
 		return rv;
 	}
 
-
-
 	// Comparison operators.
 	friend bool operator == (const Vect3<T>& lhs, const Vect3<T>& rhs)
 	{
@@ -203,6 +201,37 @@ public:
 		return *this;
 	}
 
+	T getSqrMagnitude()
+	{
+		T sum = 0;
+		for(int i = 0; i < 3; i++)
+			sum += _array[i] * _array[i];
+		return sum;
+	}
+
+	friend T dot(Vect3<T>& a, Vect3<T>& b)
+	{
+		T rv = 0.0;
+		for(int i = 0; i < 3; i++)
+			rv += a._array[i] * b._array[i];
+		return rv;
+	}
+
+	friend Vect3<T>& cross(Vect3<T>& a, Vect3<T>& b)
+	{
+		Vect3<T> rv;
+		rv.x = (a.y * b.z) - (b.y * a.z);
+		rv.y = (b.x * a.z) - (a.x * b.z);
+		rv.z = (a.x * b.y) - (b.x * a.y);
+		return rv;
+	}
+
+	friend T sqrDistance(Vect3<T>& a, Vect3<T>& b)
+	{
+		Vect3<T> rv;
+		rv = b - a;
+		return rv.getSqrMagnitude();
+	}
 };
 
 typedef Vect3<float> Vector3;

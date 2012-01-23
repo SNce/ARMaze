@@ -10,87 +10,6 @@
 //#define NEU (float)0.7000
 //#define MIN_PRECISION (float)0.000001
 //
-//// Object
-//class Object
-//{
-//public:
-//	bool isSolid;
-//
-//	Object(bool solid);
-//};
-//
-//// Wall
-//
-//class Wall : public Object
-//{
-//public:
-//
-//	int id;
-//
-//	float offset;				// offset of the plane
-//
-//	float k;				//decision parameter (used in collision detection
-//	float prev_k;			//previous value of decision parameter 
-//
-//	a3d::vector3<float> vertex[4];
-//	a3d::vector3<float> normal1;
-//	a3d::vector3<float> normal2;
-//
-//	Wall(float** vertices,bool soild);
-//	void calcD();
-//	
-//	void calcNormals();
-//};
-//
-//// Maze
-//class Maze
-//{
-//public:
-//	Wall **wall;
-//	int nWalls;
-//	GLuint list;
-//	
-//	Maze(float **vArray,int nWalls,GLuint mazeList);
-//	int createList();
-//	int calcNormals();
-//	void DrawNormals();		// Debug Purposes
-//	void Draw();
-//	
-//};
-//
-//// Ball
-//
-//class Ball : public Object
-//{
-//public:
-//	float radius;
-//	int stacks;
-//	int slices;
-//	int list;
-//	float drag;
-//
-//	a3d::vector3<float> position;
-//
-//	a3d::vector3<float> f_gravity;
-//	a3d::vector3<float> forceAccum;
-//	a3d::vector3<float> accel;
-//	a3d::vector3<float> velocity;
-//
-//	float mass;
-//	float inv_mass;
-//
-//	Ball(float *initial_pos,float r, int st,int sl,float m,bool solid,int l);
-//	
-//	int createList();
-//	void addForce(a3d::vector3<float> force);
-//	void clearForceAccum();
-//	void clearAccel();
-//	void clearVelocity();
-//	void calcGravity(a3d::vector3<float> gravity);
-//	void Draw();
-//};
-//#endif
-
 #ifndef _OBJECT
 #define _OBJECT
 
@@ -102,6 +21,7 @@
 #include <rapidxml\rapidxml.hpp>
 
 #define SCALE 1.0
+#define THRESHOLD 3.0
 
 // Ball
 class Ball
@@ -120,6 +40,11 @@ public:
 
 	void tick(float t);
 	void setGravity(float* g_array);
+	void addForce(Vector3& force);
+	Vector3& getPosition();
+	Vector3& getVelocity();
+	float getRadius();
+	float getMass();
 	void draw();
 };
 
@@ -129,10 +54,16 @@ class Wall
 private:
 	Vector3 normal;
 	Vector3* vertices;
+	float minX, maxX;
+	float minY, maxY;
 public:
 	Wall(Vector3* v);
 	~Wall();
 	void calcNormal();
+	Vector3& getNormal();
+	Vector3* getVertices();
+	void correctNormal();
+	bool inBounds(Vector3& pos);
 	void draw();
 };
 
@@ -147,10 +78,10 @@ public:
 	Maze(char* mazeFile);
 	~Maze();
 	void tick(float t);
-	void draw();
 	void setGravity(float* g_array);
+	void collisions(std::list<Wall*>& c_walls);
+	void resolveCollisions(std::list<Wall*>& collisions, float t);
+	void draw();
 };
-
-
 
 #endif

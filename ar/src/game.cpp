@@ -24,7 +24,12 @@ double Game::patt_width = 80.0;
 double Game::patt_centre[2] = {0.0, 0.0};
 double Game::patt_trans[3][4];
 double Game::ref_trans[3][4];
+
+#ifdef _DEBUG
+Maze* Game::maze = new Maze("../debug/maze1.xml");
+#else
 Maze* Game::maze = new Maze("maze1.xml");
+#endif
 
 char* Game::cap_msg = "Hold the pattern horizontally and press C";
 char* Game::start_msg = "Press S to start";
@@ -170,9 +175,7 @@ void Game::mainLoop()
 		arUtilMatInv(patt_trans, inv_trans);
 		arUtilMatMul(inv_trans, ref_trans, trans_mat);
 		mult(grav_trans, trans_mat, abs_gravity);
-#ifdef _DEBUG
-		cout<<grav_trans[0]<<"  "<<grav_trans[1]<<"  "<<grav_trans[2]<<endl;
-#endif
+
 		maze->setGravity(grav_trans);
 		float time = arUtilTimer();
 		float dt = time - prev_time;
