@@ -116,6 +116,8 @@ void Maze::resolveCollisions(std::list<Wall*>& c_walls, float t)
 		list<Wall*>::iterator it;
 		for(it = c_walls.begin(); it != c_walls.end(); it++)
 		{
+			//Adjust ball position.
+			//@todo.
 			//Velocity component along normal.
 			float v_component = dot(ball->getVelocity(), (*it)->getNormal());
 		
@@ -136,7 +138,9 @@ void Maze::resolveCollisions(std::list<Wall*>& c_walls, float t)
 			Vector3 n_force;
 			n_force = n_velocity * ball->getMass();
 			n_force /= t;
+			n_force *= DAMP;
 			ball->addForce(n_force);
+			ball->damp();
 		}
 	}
 }
@@ -188,6 +192,11 @@ void Ball::tick(float t)
 	gForce = gravity * (mass * SCALE);
 	netForce += gForce;
 
+	Vector3 rf = velocity;
+	rf.normalize();
+	rf = -rf;
+	rf.setMagnitude(mass * COEFF_FRIC * 9.8);
+
 	acceleration = netForce / mass;
 	dv = acceleration * t;
 	velocity += dv;
@@ -209,6 +218,13 @@ void Ball::setGravity(float* g_array)
 void Ball::addForce(Vector3& force)
 {
 	netForce += force;
+}
+
+void Ball::damp()
+{
+	float sqrmgt = velocity.getSqrMagnitude();
+	float mgt = sqrt(sqrmgt) * DAMP;
+	velocity.setMagnitude(mgt);
 }
 
 Vector3& Ball::getPosition()

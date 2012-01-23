@@ -20,7 +20,9 @@
 #include <list>
 #include <rapidxml\rapidxml.hpp>
 
-#define SCALE 1.0
+#define SCALE 5.0
+#define DAMP 0.8
+#define COEFF_FRIC 0.6
 #define THRESHOLD 3.0
 
 // Ball
@@ -41,6 +43,7 @@ public:
 	void tick(float t);
 	void setGravity(float* g_array);
 	void addForce(Vector3& force);
+	void damp();
 	Vector3& getPosition();
 	Vector3& getVelocity();
 	float getRadius();

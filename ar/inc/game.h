@@ -31,7 +31,7 @@ private:
 	static float grav_trans[3];
 
 	static char* cap_msg;
-	static char* start_msg;
+	
 	static float text_pos[3];
 	static float text_color[3];
 

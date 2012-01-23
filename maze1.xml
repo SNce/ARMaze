@@ -24,4 +24,34 @@
 		<vertex x = "-100.0" y = "-160.0" z = "30.0"></vertex>
 		<vertex x = "-100.0" y = "-160.0" z = "0.0"></vertex>
 	</wall>
+	<wall>
+		<vertex x = "-80.0" y = "-140.0" z = "0.0"></vertex>
+		<vertex x = "-80.0" y = "-140.0" z = "30.0"></vertex>
+		<vertex x = "-80.0" y = "-100.0" z = "30.0"></vertex>
+		<vertex x = "-80.0" y = "-100.0" z = "0.0"></vertex>
+	</wall>
+	<wall>
+		<vertex x = "-100.0" y = "-140.0" z = "0.0"></vertex>
+		<vertex x = "-100.0" y = "-140.0" z = "30.0"></vertex>
+		<vertex x = "-80.0" y = "-140.0" z = "30.0"></vertex>
+		<vertex x = "-80.0" y = "-140.0" z = "0.0"></vertex>
+	</wall>
+	<wall>
+		<vertex x = "-80.0" y = "-80.0" z = "0.0"></vertex>
+		<vertex x = "-80.0" y = "-80.0" z = "30.0"></vertex>
+		<vertex x = "-80.0" y = "-40.0" z = "30.0"></vertex>
+		<vertex x = "-80.0" y = "-40.0" z = "0.0"></vertex>
+	</wall>
+	<wall>
+		<vertex x = "-80.0" y = "-40.0" z = "0.0"></vertex>
+		<vertex x = "-80.0" y = "-40.0" z = "30.0"></vertex>
+		<vertex x = "-40.0" y = "-0.0" z = "30.0"></vertex>
+		<vertex x = "-40.0" y = "-0.0" z = "0.0"></vertex>
+	</wall>
+	<wall>
+		<vertex x = "-80.0" y = "20.0" z = "0.0"></vertex>
+		<vertex x = "-80.0" y = "20.0" z = "30.0"></vertex>
+		<vertex x = "-40.0" y = "60.0" z = "30.0"></vertex>
+		<vertex x = "-40.0" y = "60.0" z = "0.0"></vertex>
+	</wall>
 </maze>

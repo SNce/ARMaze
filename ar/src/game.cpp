@@ -32,7 +32,7 @@ Maze* Game::maze = new Maze("maze1.xml");
 #endif
 
 char* Game::cap_msg = "Hold the pattern horizontally and press C";
-char* Game::start_msg = "Press S to start";
+
 float Game::text_color[3] = {0.75, 0.0, 0.0};
 float Game::text_pos[3] = {-0.95, -0.20, 0.0};
 
@@ -172,9 +172,15 @@ void Game::mainLoop()
 		double inv_trans[3][4];
 		double trans_mat[3][4];
 
-		arUtilMatInv(patt_trans, inv_trans);
-		arUtilMatMul(inv_trans, ref_trans, trans_mat);
+		arUtilMatInv(ref_trans, inv_trans);
+		arUtilMatMul(inv_trans, patt_trans, trans_mat);
+
+		for(int i = 0; i < 4; i++)
+			trans_mat[i][3] = 0.0;
+
 		mult(grav_trans, trans_mat, abs_gravity);
+		for(int i = 0; i < 3; i++)
+			grav_trans[i] = -grav_trans[i];
 
 		maze->setGravity(grav_trans);
 		float time = arUtilTimer();
@@ -254,13 +260,7 @@ void Game::draw()
 	glMatrixMode(GL_MODELVIEW);
 
 	maze->draw();
-	glPushMatrix();
-	glBegin(GL_TRIANGLES);
-	glVertex3f(0.0, 0.0, 0.0);
-	glVertex3fv(grav_trans);
-	glVertex3f(10.0, 10.0, 0.0);
-	glEnd();
-	glPopMatrix();
+	
 	glDisable( GL_LIGHTING );
 
 	glDisable( GL_DEPTH_TEST );
